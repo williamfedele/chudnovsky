@@ -8,6 +8,10 @@ from common import find_diff_index
 getcontext().prec = 1000
 
 
+C1 = Decimal(426880) * Decimal(10005).sqrt()
+C2 = Decimal(13591409)
+
+
 def binary_split(a, b):
     # Base case
     if b == a + 1:
@@ -28,8 +32,6 @@ def binary_split(a, b):
 
 # Function to compute pi using the Chudnovsky series optimized with binary splitting.
 def chudnovsky_term(num_terms):
-    C1 = Decimal(426880) * Decimal(10005).sqrt()
-    C2 = Decimal(13591409)
     P1n, Q1n, R1n = binary_split(1, num_terms)
     return (C1 * Q1n) / (C2 * Q1n + R1n)
 
