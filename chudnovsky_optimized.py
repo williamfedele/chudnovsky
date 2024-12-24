@@ -4,11 +4,7 @@ import sys
 from common import find_diff_index
 
 
-# Decimal precision
-getcontext().prec = 1000
-
-
-C1 = Decimal(426880) * Decimal(10005).sqrt()
+# C1 = Decimal(426880) * Decimal(10005).sqrt()
 C2 = Decimal(13591409)
 
 
@@ -38,6 +34,10 @@ def chudnovsky_term(num_terms):
 
 def chudnovsky_precision(precision):
     getcontext().prec = precision + int(precision * 1 / 10)
+
+    # Need to increase precision before performing sqrt
+    global C1
+    C1 = Decimal(426880) * Decimal(10005).sqrt()
 
     terms = 2
     prev = Decimal(0)
